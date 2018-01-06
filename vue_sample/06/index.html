@@ -1,0 +1,29 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>コンポーネント</h1>
+
+<div id="app-6">
+  <ol>
+    <todo-item v-for='item in items' :key='item.id' v-bind:todo='item'></todo-item>
+  </ol>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
+  })
+
+  const app = new Vue({
+    el: '#app-6',
+    data: {
+      items: [
+        { id: 0, text: 'Vegetables' },
+        { id: 1, text: 'Cheese' },
+        { id: 2, text: 'Whatever else humans are supposed to eat' }
+      ],
+      url: 'https://jp.vuejs.org/v2/guide/index.html#%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AB%E3%82%88%E3%82%8B%E6%A7%8B%E6%88%90'
+    }
+  })
+</script>

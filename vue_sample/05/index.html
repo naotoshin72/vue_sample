@@ -1,0 +1,24 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>入力制御</h1>
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click='reverseMessage'>Reverse Message</button>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  const app = new Vue({
+    el: '#app-5',
+    data: {
+      message: 'Hello Vue js',
+      url: 'https://jp.vuejs.org/v2/guide/index.html#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%85%A5%E5%8A%9B%E3%81%AE%E5%88%B6%E5%BE%A1'
+    },
+    methods: {
+      reverseMessage: function() {
+        this.message = this.message.split('').reverse().join('')
+      }
+    }
+  })
+</script>

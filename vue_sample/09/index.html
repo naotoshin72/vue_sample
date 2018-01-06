@@ -1,0 +1,49 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>HTMLクラスのバインディング</h1>
+
+<div id="app-9">
+  <h2>参照プロパティ利用なし</h2>
+  <div v-bind:class='classObject'></div>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app-9',
+    data: {
+      classObject: {
+        isActive: true,
+        'text-danger': false
+      },
+      url: 'https://jp.vuejs.org/v2/guide/class-and-style.html#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%A7%8B%E6%96%87'
+    }
+  })
+</script>
+
+<div id="app-9-2">
+  <h2>参照プロパティ利用あり</h2>
+  <div v-bind:class='classObject'></div>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  const vm2 = new Vue({
+    el: '#app-9-2',
+    data: {
+      classObject: {
+        isActive: true,
+        error: false
+      },
+      url: 'https://jp.vuejs.org/v2/guide/class-and-style.html#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%A7%8B%E6%96%87'
+    },
+    conputed: {
+      classObject: function() {
+        return {
+          active: this.isActive && !this.error,
+          'text-danger': this.error && this.error.type == 'fatal'
+        }
+      }
+    }
+  })
+</script>

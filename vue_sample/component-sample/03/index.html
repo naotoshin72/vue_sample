@@ -1,0 +1,27 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>コンポーネントのdataオプション</h1>
+
+<div id="app-3">
+  <my-component></my-component>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+
+
+<script>
+  Vue.component('my-component', {
+    template: '<button v-on:click="counter += 1">A custom component!{{ counter }}</button>',
+    data: function() {
+      return {
+        counter: 0
+      }
+    }
+  })
+  const vm = new Vue({
+    el: '#app-3',
+    data: {
+      url: 'https://jp.vuejs.org/v2/guide/components.html#%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%BF%E7%94%A8'
+    }
+  })
+</script>

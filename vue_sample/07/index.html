@@ -1,0 +1,26 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>参照プロパティ</h1>
+
+<div id="app-7">
+  <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+
+  <p>参照プロパティがメソッドと異なる点は、依存する参照元が更新されない限り、更新されないということ</p>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app-7',
+    data: {
+      message: 'hello',
+      url: 'https://jp.vuejs.org/v2/guide/computed.html#%E7%AE%97%E5%87%BA%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3'
+    },
+    computed: {
+      reversedMessage: function(){
+        return this.message.split('').reverse().join('')
+      }
+    }
+  })
+</script>

@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>プロパティによるデータ伝達</h1>
+
+<div id="app-4">
+  <my-component message='hello!'></my-component>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+
+
+<script>
+  Vue.component('my-component', {
+    props: ['message'],
+    template: '<p>{{ message }} vue js!</p>',
+  })
+  const vm = new Vue({
+    el: '#app-4',
+    data: {
+      url: 'https://jp.vuejs.org/v2/guide/components.html#%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%AB%E3%82%88%E3%82%8B%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E4%BC%9D%E9%81%94'
+    }
+  })
+</script>
