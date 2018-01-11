@@ -1,0 +1,40 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>カスタムイベント</h1>
+
+<div id="app-17">
+  <p>{{ total }}</p>
+
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+  <p><a :href='url'>※詳細についてはこちらを参照してください</a></p>
+</div>
+
+<script>
+  Vue.component('button-counter',{
+    template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+    data: function() {
+      return {
+      counter: 0
+    }
+    },
+    methods: {
+      incrementCounter: function() {
+        this.counter += 1
+        this.$emit('increment')
+      }
+    }
+  })
+
+  new Vue({
+    el: '#app-17',
+    data: {
+      total: 0,
+      url: 'https://jp.vuejs.org/v2/guide/components.html#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A8%E3%81%AE-v-on-%E3%81%AE%E4%BD%BF%E7%94%A8'
+    },
+    methods: {
+      incrementTotal: function () {
+        this.total += 1
+      }
+    }
+  })
+</script>

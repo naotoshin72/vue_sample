@@ -1,0 +1,75 @@
+
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+  <div class="parent">
+    <h2>Parent</h2>
+    <!--
+      子コンポーネントからのデータを表示
+      親.applyメソッドで更新される
+    -->
+    <p>{{ messageFromChild }}</p>
+
+    <!-- 親.onInputでリアルタイムに更新される -->
+    <p>{{ messageVModel }}</p>
+  </div>
+
+  <!--
+    parent-messageは静的に値を渡している
+    子コンポーネントで$emit(’apply-from-child')で親.applyメソッドが実行される
+    v-modelはprops['value']で受け取ることができる
+  -->
+  <my-child parent-message="literal-from-parent" v-on:apply-from-child="apply" v-model="messageVModel"></my-child>
+
+https://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.html
+</div>
+
+
+<script>
+
+Vue.component('my-child', {
+  template: [
+    '<div class="child">',
+    '<h2>Child Component</h2>',
+    '<input type="text" v-model="childMessage" v-on:input="onInput"></input>',
+    '<button @click="apply">apply</button>',
+    '<p>{{ parentMessage }}</p>',
+    '<p>{{ value }}</p>',
+    '</div>'
+  ].join(''),
+  props: [
+    'parentMessage',  // 親コンポーネントの`parent-message`を`parentMessage`で受け取る
+    'value'           // 親コンポーネントの`v-model`を`value`で受け取る
+  ],
+  data () {
+    return {
+      childMessage: ''
+    }
+  },
+  methods: {
+    apply () {
+      // @click: ボタンを押したときに`apply-from-child`イベントを発火させて親コンポーネントにデータを渡す
+      this.$emit('apply-from-child', this.childMessage)
+    },
+    onInput (e) {
+      // v-on:input: 値を入力したときにinputイベントを発火させて、親コンポーネントのv-modelを更新する
+      this.$emit('input', e.target.value)
+    }
+  }
+})
+const app = new Vue({
+  el: '#app',
+  data () {
+    return {
+      messageFromChild: 'message from child',
+      messageVModel: 'message v-model'
+    }
+  },
+  methods: {
+    apply (value) {
+      // 子コンポーネントのapplyメソッドからイベントが発火される
+      this.messageFromChild = value
+    }
+  }
+})
+
+</script>
