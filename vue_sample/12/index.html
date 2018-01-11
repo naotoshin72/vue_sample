@@ -1,0 +1,19 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>フォームの入力バインディング(テキストフィールド)</h1>
+
+<div id="app-12">
+  <input v-model='message' placeholder='edit me'>
+  <p>Message is: {{ message }}</p>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app-12',
+    data: {
+      message: '',
+      url: 'https://jp.vuejs.org/v2/guide/forms.html#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E4%BD%BF%E3%81%84%E6%96%B9'
+    }
+  })
+</script>

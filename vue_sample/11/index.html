@@ -1,0 +1,40 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>条件付きレンダリング</h1>
+
+<div id="app-11-1">
+  <h1>v-if ~ v-else</h1>
+  <h2 v-if='true'>Yes</h2>
+  <h2 v-else>No</h2>
+
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app-11-1',
+    data: {
+      url: 'https://jp.vuejs.org/v2/guide/conditional.html#v-if'
+    }
+  })
+</script>
+
+
+<div id="app-11-2">
+  <h1>templateの利用</h1>
+  <template v-if='true'>
+    <h2>Title</h2>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </template>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  const vm2 = new Vue({
+    el: '#app-11-2',
+    data: {
+      url: 'https://jp.vuejs.org/v2/guide/conditional.html#v-if'
+    }
+  })
+</script>

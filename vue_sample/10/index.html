@@ -1,0 +1,41 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>HTMLクラスのバインディング(コンポーネント)</h1>
+
+<div id="app-10-1">
+  <h2>クラス属性の追加</h2>
+  <my-component class="baz boo"></my-component>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  Vue.component('my-component', {
+    template: '<p class="foo bar">Hi</p>'
+  })
+  const vm = new Vue({
+    el: '#app-10-1',
+    data: {
+      url: 'https://jp.vuejs.org/v2/guide/class-and-style.html#%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6'
+    }
+  })
+</script>
+
+
+<div id="app-10-2">
+  <h2>クラス属性の追加</h2>
+  <my-component2 v-bind:class="{active: isActive}"></my-component2>
+  <a :href='url'>※詳細についてはこちらを参照してください</a>
+</div>
+
+<script>
+  Vue.component('my-component2', {
+    template: '<p class="foo bar">Hi</p>'
+  })
+  const vm2 = new Vue({
+    el: '#app-10-2',
+    data: {
+      isActive: false,
+      url: 'https://jp.vuejs.org/v2/guide/class-and-style.html#%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6'
+    }
+  })
+</script>

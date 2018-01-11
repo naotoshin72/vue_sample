@@ -1,0 +1,26 @@
+<script src="https://unpkg.com/vue"></script>
+
+<h1>フォームの入力バインディング(プルダウンリスト)</h1>
+
+<div id="app-16-1">
+  <select v-model="selected">
+    <option disabled value=""><options>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+    <option>D</option>
+  </select>
+
+  <p>{{ selected }}</p>
+  <p><a :href='url'>※詳細についてはこちらを参照してください</a></p>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app-16-1',
+    data: {
+      selected: '',
+      url: 'https://jp.vuejs.org/v2/guide/forms.html#%E9%81%B8%E6%8A%9E'
+    }
+  })
+</script>
